@@ -23,7 +23,7 @@
                 
                 <div class="paper">
                     <div class="paper__inner">
-                        <div data-post data-ng-repeat="post in __main.posts track by $index" data-value="post"></div>
+                        <div data-post data-ng-repeat="post in __main.posts track by $index" data-value="post" data-month="__main.posts[$index].name"></div>
                     </div>
                 </div>
             </main>
@@ -60,7 +60,7 @@
         </script>
 
         <script type="text/template" id="post">
-            <a href="blog/{{value.month}}/{{value.name}}.html">
+            <a href="blog/{{month}}/{{value.name}}">
                 <div class="post">
                     <h2 class="post__heading" data-ng-bind="value.heading"></h2>
                     <div class="post__date" data-ng-bind="value.date"></div>

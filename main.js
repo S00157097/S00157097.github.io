@@ -98,11 +98,13 @@
                     name: 'October',
                     posts: [
                         {
-                            name: 'some_heading'
-                            heading: 'Some Heading',
-                            date: '10/10/2016',
+                            name: 'mean_js',
+                            month: 'October',
+                            heading: 'MEAN.js As The Environment',
+                            date: '13/10/2016',
                             text: 'Some content'
                         }
+                    ]
                 }
             ];
         }
