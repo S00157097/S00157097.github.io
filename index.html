@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html data-ng-cloak data-ng-app="App">
+    <head>
+        <title>Blog</title>
+        
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        
+        <link rel="stylesheet" type="text/css" href="main.css" />
+        
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
+    </head>
+    
+    <body data-ng-controller="MainController as __main">
+        <div class="wrap">
+            
+            <div data-nav></div>
+
+            <main class="main">
+                <div data-aside data-collection="__main.posts"></div>
+                
+                <div class="paper">
+                    <div class="paper__inner">
+                        <div data-post data-ng-repeat="post in __main.posts track by $index" data-value="post" data-month="__main.posts[$index].name"></div>
+                    </div>
+                </div>
+            </main>
+        </div>
+        
+        <script src="main.js"></script>
+
+        <script type="text/template" id="nav">
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li class="nav__list-item nav__list-item--main">
+                        <a href="#" class="nav__list-anchor">Some Text</a>
+                    </li>
+                    <li
+                        class="nav__list-item"
+                        data-ng-repeat="link in ::__.links track by $index">
+                        <a href="{{ link.href }}" class="nav__list-anchor" data-ng-bind="link.name"></a>
+                    </li>
+                </ul>
+            </nav>
+        </script>
+
+        <script type="text/template" id="aside">
+            <aside class="aside">
+                <ul class="aside__list">
+                    <li
+                        class="aside__list-item"
+                        data-ng-repeat="link in ::__.links track by $index"
+                        data-ng-click="__.changePosts($index)">
+                        <span data-ng-bind="link"></span>
+                    </li>
+                </ul>
+            </aside>
+        </script>
+
+        <script type="text/template" id="post">
+            <a href="blog/{{value.month}}/{{value.name}}">
+                <div class="post">
+                    <h2 class="post__heading" data-ng-bind="value.heading"></h2>
+                    <div class="post__date" data-ng-bind="value.date"></div>
+                </div>
+            </a>
+        </script>
+    </body>
+</html>
